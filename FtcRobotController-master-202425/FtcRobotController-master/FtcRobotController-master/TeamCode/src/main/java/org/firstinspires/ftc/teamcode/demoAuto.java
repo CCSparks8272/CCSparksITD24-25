@@ -50,18 +50,14 @@ public class demoAuto extends LinearOpMode
 
         //instructions
         waitForStart();
-        sleep(100);
-
-        goBackwards(0.4, 2500);
-        sleep(50);
-        goLeft(0.6, 500);
-        //ill give you a new hat if you give us a new room;
-        sleep(50);
+        horzLift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        goForward(1, 1823); //12 feet
+        goLeftt(1, 225);
 
     }
 
 
-    public void goForward(double speed, int milliseconds)
+    public void goBackwards(double speed, int milliseconds)
     {
         motorFrontRight.setPower(speed);
         motorFrontLeft.setPower(speed);
@@ -76,8 +72,8 @@ public class demoAuto extends LinearOpMode
     }
 
 
-    public void goLeft(double speed, int milliseconds)
-    {
+    public void goLeft(double speed, int milliseconds) {
+        if (opModeIsActive()) {
         motorFrontRight.setPower(speed);
         motorBackRight.setPower(speed);
         motorFrontLeft.setPower(-speed);
@@ -87,7 +83,8 @@ public class demoAuto extends LinearOpMode
         motorFrontLeft.setPower(0.0);
         motorBackLeft.setPower(0.0);
         motorBackRight.setPower(0.0);
-        sleep( 200 );
+        sleep(200);
+    }
     }
 
 
@@ -110,7 +107,7 @@ public class demoAuto extends LinearOpMode
 
 
 
-    public void goBackwards(double speed, int milliseconds)
+    public void goForward(double speed, int milliseconds)
     {
         motorFrontRight.setPower(-speed);
         motorBackRight.setPower(-speed);
