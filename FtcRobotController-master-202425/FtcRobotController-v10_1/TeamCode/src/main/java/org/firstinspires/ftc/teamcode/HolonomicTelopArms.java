@@ -11,9 +11,7 @@ import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.CRServo;
 
 
-
 @TeleOp(name = "Holonomic Telop - Lifts", group = "Telop")
-
 
 
 
@@ -40,6 +38,8 @@ public class HolonomicTelopArms extends OpMode
 
     private Servo grab;
     private Servo wrist;
+    private Odometry odo;
+
 
 
 
@@ -58,6 +58,15 @@ public class HolonomicTelopArms extends OpMode
         grab = hardwareMap.servo.get("GRAB");
         wrist = hardwareMap.servo.get("WRIST");
        // setupEncoders();
+        odo = new Odometry(
+                hardwareMap,
+                "leftEncoder", "rightEncoder", "centerEncoder", // your encoder names
+                8192, // TICKS_PER_REV (example)
+                2.0,  // WHEEL_DIAMETER in inches
+                14.5, // TRACK_WIDTH in inches
+                -6.5  // CENTER_WHEEL_OFFSET in inches
+        );
+        ;
     }
 
 
@@ -192,12 +201,22 @@ public class HolonomicTelopArms extends OpMode
         // Telemetry.
         telemetry.addData("Encoder Vert Lift", vertLift.getCurrentPosition());
         telemetry.addData("Encoder Horz Lift", horzLift.getCurrentPosition());
-        telemetry.update();
         telemetry.addData("front right", FrontRight);
         telemetry.addData("front left", FrontLeft);
         telemetry.addData("back right", BackRight);
         telemetry.addData("back left", BackLeft);
+
+        double x = odo.getX();
+        double y = odo.getY();
+        double heading = odo.getHeading();
+
+        telemetry.addData("X (in)", x);
+        telemetry.addData("Y (in)", y);
+        telemetry.addData("Heading (rad)", heading);
+
+        odo.update();
         telemetry.update();
+
     }
    /* public void setupEncoders(){
         motorFrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
