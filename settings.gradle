@@ -1,2 +1,21 @@
-include ':FtcRobotController'
-include ':TeamCode'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+        maven { url 'https://maven.brott.dev/' }
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://maven.brott.dev/' }
+    }
+}
+
+rootProject.name = "FtcRobotController-v10_1"
+include(":FtcRobotController", ":TeamCode")
