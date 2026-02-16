@@ -403,7 +403,6 @@ public class HolonomicTelop extends OpMode {
 
             lastB = b.getState();
         }
-
         // Call every loop
         public void update() {
             boolean curA = a.getState();
