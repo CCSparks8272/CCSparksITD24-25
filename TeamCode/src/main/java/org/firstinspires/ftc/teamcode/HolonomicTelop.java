@@ -400,6 +400,7 @@ public class HolonomicTelop extends OpMode {
         public void reset() {
             position = 0;
             lastA = a.getState();
+
             lastB = b.getState();
         }
 
