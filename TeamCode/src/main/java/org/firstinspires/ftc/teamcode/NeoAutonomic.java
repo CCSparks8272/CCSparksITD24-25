@@ -4,15 +4,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-@Autonomous(name= "Go Forward 2 Seconds", group="Autonomous")
+@Autonomous(name= "Go Forward 2 Seconds pt 2 electric boogaloo", group="Autonomous")
 
 
 
 public class NeoAutonomic extends LinearOpMode
 {
 
-    private DcMotor motorFrontRight;
-    private DcMotor motorFrontLeft;
+    private DcMotor motorFrontRight;    private DcMotor motorFrontLeft;
     private DcMotor motorBackRight;
     private DcMotor motorBackLeft;
 
@@ -21,9 +20,9 @@ public class NeoAutonomic extends LinearOpMode
     public void runOpMode()
     {
         motorFrontRight = hardwareMap.dcMotor.get("FR");
-        motorFrontLeft = hardwareMap.dcMotor.get("FL");
-        motorBackLeft = hardwareMap.dcMotor.get("BL");
-        motorBackRight = hardwareMap.dcMotor.get("BR");
+        motorFrontLeft  = hardwareMap.dcMotor.get("FL");
+        motorBackLeft   = hardwareMap.dcMotor.get("BL");
+        motorBackRight  = hardwareMap.dcMotor.get("BR");
 
         motorBackLeft.setDirection(DcMotor.Direction.REVERSE);
         motorBackRight.setDirection(DcMotor.Direction.FORWARD);

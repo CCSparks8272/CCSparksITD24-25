@@ -7,11 +7,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.RRThreeWheelLocalizer;
 import org.firstinspires.ftc.teamcode.SampleMecanumDrive;
 
-/**
- * Minimal TeleOp to verify Road Runner pose from 3-wheel odometry.
- * - Injects RRThreeWheelLocalizer into your SampleMecanumDrive.
- * - Prints x/y/heading; you can also drive around if you wire gamepad controls in your drive class.
- */
 @TeleOp(name = "Odometry Test", group = "Test")
 public class OdometryTeleOp extends LinearOpMode {
     @Override
